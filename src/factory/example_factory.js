@@ -46,7 +46,8 @@ exports.updateProduct = async(request, reply)=>{
         //         console.log(prod);
         //     }
         // });
-        let itemList = await Product.findByIdAndUpdate(request.params.id, request.payload, {new: true});
+        let itemList = await ItemListStore.findByIdAndUpdate(request.params.id, request.payload, {new: true});
+        console.log(itemList);
         return reply.response(Response.sendResponse(true, itemList, ResponseMessage.SUCCESS, StatusCode.OK));
     }catch(error){
         return reply.response(Response.sendResponse(false, error, ResponseMessage.ERROR, StatusCode.BAD_REQUEST));
